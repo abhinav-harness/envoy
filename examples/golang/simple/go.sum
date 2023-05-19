@@ -2,6 +2,8 @@ cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMT
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
+github.com/cncf/xds v0.0.0-20230428030218-4003588d1b74 h1:Qto2X7EVVDE5qVHp30Y93vu3BoQ2jgp/t5lSmiS8Sgw=
+github.com/cncf/xds v0.0.0-20230428030218-4003588d1b74/go.mod h1:inx4ZMKo660I6CU/RP9UEgHMOQMvNfnd+ytnLelYqqo=
 github.com/cncf/xds/go v0.0.0-20230310173818-32f1caf87195 h1:58f1tJ1ra+zFINPlwLWvQsR9CzAKt2e+EWV2yX9oXQ4=
 github.com/cncf/xds/go v0.0.0-20230310173818-32f1caf87195/go.mod h1:eXthEFrGJvWHgFFCl3hGmgk+/aYT6PnTQLykKQRLhEs=
 github.com/envoyproxy/envoy/contrib/golang/filters/http/source/go v0.0.0-20230324062628-466cf15f1790 h1:0gwaogAlbAdFSlmhaJ5wZTz7OyZ+FJ0jnU+C/eUKwNs=

@@ -9,6 +9,8 @@ services:
     depends_on:
       helloworld_service:
         condition: service_healthy
+      jaeger:
+        condition: service_healthy
     ports:
     - "${PORT_PROXY:-10000}:10000"
 
@@ -16,3 +18,11 @@ services:
     build:
       context: ../shared/python
       target: aiohttp-hello-service
+
+  jaeger:
+    build:
+      dockerfile: ../shared/jaeger/Dockerfile
+    environment:
+    - COLLECTOR_ZIPKIN_HOST_PORT=9411
+    ports:
+    - "${PORT_UI:-10001}:16686"

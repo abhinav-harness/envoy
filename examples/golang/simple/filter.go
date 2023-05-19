@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"strconv"
 
 	"github.com/envoyproxy/envoy/contrib/golang/filters/http/source/go/pkg/api"
@@ -26,6 +27,14 @@ func (f *filter) DecodeHeaders(header api.RequestHeaderMap, endStream bool) api.
 	f.path, _ = header.Get(":path")
 	if f.path == "/localreply_by_config" {
 		return f.sendLocalReplyInternal()
+	}
+	intn := rand.Intn(100)
+	if intn%2 == 1 {
+		header.Set("x-harness-cluster", "prod1")
+		_ = fmt.Sprint("prod1 header set")
+	} else {
+		header.Set("x-harness-cluster", "prod2")
+		_ = fmt.Sprint("prod2 header set")
 	}
 	return api.Continue
 }
