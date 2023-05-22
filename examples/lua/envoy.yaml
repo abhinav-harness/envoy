@@ -26,34 +26,6 @@ static_resources:
             typed_config:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
           http_filters:
-          - name: envoy.filters.http.lua
-            typed_config:
-              "@type": type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
-              default_source_code:
-                inline_string:
-                  function envoy_on_response(response_handle)
-                    math.randomseed(os.time())
-                    a = math.random(5)
-                    print(a)
-                    if a%2 ==0 then
-                      response_handle:headers():add("x-harness-cluster", "prod1")
-                    else
-                      response_handle:headers():add("x-harness-cluster", "prod2")
-                    end
-                    response_handle:headers():add("header_key_1", "header_value_13")
-                  end
-
-                  function envoy_on_request(request_handle)
-                    math.randomseed(os.time())
-                    a = math.random(5)
-                    print(a)
-                    if a%2 ==0 then
-                      request_handle:headers():add("x-harness-cluster", 'prod1')
-                    else
-                      request_handle:headers():add("x-harness-cluster", 'prod2')
-                    end
-                    request_handle:headers():add("header_key_1", "header_value_14")
-                  end
           - name: envoy.filters.http.router
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
@@ -66,15 +38,464 @@ static_resources:
               - match:
                   prefix: "/"
                   headers:
-                      - name: x-harness-cluster
-                        exact_match: 'prod1'
+                    - name: accountId
+                      exact_match: "one"
                 route:
                   cluster: helloworld_service_cluster
               - match:
                   prefix: "/"
                   headers:
-                      - name: x-harness-cluster
-                        exact_match: 'prod2'
+                    - name: accountId
+                      exact_match: "two"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "three"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "four"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "five"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "six"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "seven"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "eight"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "nine"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "ten"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "eleven"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "tweleve"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "thirteen"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "fourteen"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "fifteen"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "sixteen"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "seventeen"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "eighteen"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "nineteen"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "twenty"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "twentyone"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "twentytwo"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "tweentythree"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "tweentyfour"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "tweentyfive"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "tweentysix"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "tweentyseven"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "tweentyeight"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "tweentynine"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "thrity"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "thrityone"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "thritytwo"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "thritythree"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "thrityfour"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "thrityfive"
+                route:
+                  cluster: helloworld_service_cluster
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "thritysix"
+                route:
+                  cluster: helloworld_service_cluster
+
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "oneone"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetwo"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onethree"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onefour"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onefive"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onesix"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "oneseven"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "oneeight"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onenine"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "oneten"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "oneeleven"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetwelve"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onethirteen"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onefouteen"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onefifteen"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onesixteen"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "oneseventeen"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "oneeighteen"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "oneninteen"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetwenty"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweentyone"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweentytwo"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweentythree"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweentyfour"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweeentyfive"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweentysix"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweentyseven"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweentyeight"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onetweentynine"
+                route:
+                  cluster: helloworld_service_cluster_1
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: accountId
+                      exact_match: "onethrity"
                 route:
                   cluster: helloworld_service_cluster_1
 
