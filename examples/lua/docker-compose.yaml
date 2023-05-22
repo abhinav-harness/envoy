@@ -4,11 +4,25 @@ services:
     build:
       dockerfile: ../shared/envoy/Dockerfile
       target: envoy-lua
+      args:
+        ENVOY_VARIANT: contrib-dev
+    depends_on:
+      helloworld_service:
+        condition: service_healthy
+      jaeger:
+        condition: service_healthy
     ports:
-    - "${PORT_PROXY:-8000}:8000"
+    - "${PORT_PROXY:-10000}:10000"
 
-  web_service:
+  helloworld_service:
     build:
-      context: ../shared/echo
+      context: ../shared/python
+      target: aiohttp-hello-service
+
+  jaeger:
+    build:
+      dockerfile: ../shared/jaeger/Dockerfile
+    environment:
+    - COLLECTOR_ZIPKIN_HOST_PORT=9411
     ports:
-    - "${PORT_WEB:-8080}:8080"
+    - "${PORT_UI:-10001}:16686"
